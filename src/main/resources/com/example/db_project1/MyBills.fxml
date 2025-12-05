@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.db_project1.MyBillsController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <children>
+        <!-- Header Section with consistent date display -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <Label text="My Bills" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Label text="Today's Date"/>
+                    <Label fx:id="dateLabel" text="2025-05-09" style="-fx-font-weight: bold;"/>
+                </HBox>
+            </children>
+        </HBox>
+
+        <!-- Filter Section -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <ComboBox fx:id="statusFilterCombo" prefHeight="35.0" prefWidth="200.0" promptText="Filter by Status">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="All" />
+                            <String fx:value="Paid" />
+                            <String fx:value="Pending" />
+                            <String fx:value="Cancelled" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <DatePicker fx:id="fromDatePicker" prefHeight="35.0" prefWidth="200.0" promptText="From Date"/>
+                <DatePicker fx:id="toDatePicker" prefHeight="35.0" prefWidth="200.0" promptText="To Date"/>
+                <Button fx:id="applyFilterBtn" mnemonicParsing="false" onAction="#handleApplyFilter" prefHeight="35.0"
+                        prefWidth="100.0" style="-fx-background-color: #2d7ae5; -fx-text-fill: white;" text="Apply"/>
+                <Button fx:id="clearFilterBtn" mnemonicParsing="false" onAction="#handleClearFilter" prefHeight="35.0"
+                        prefWidth="100.0" style="-fx-background-color: #e0e0e0;" text="Clear"/>
+            </children>
+        </HBox>
+
+        <!-- Summary Section -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15;">
+            <children>
+                <VBox alignment="CENTER" style="-fx-background-color: #e9f3ff; -fx-padding: 10; -fx-background-radius: 5;">
+                    <Label text="Total Bills" />
+                    <Label fx:id="totalBillsLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="0" />
+                </VBox>
+                <VBox alignment="CENTER" style="-fx-background-color: #e8f5e9; -fx-padding: 10; -fx-background-radius: 5;">
+                    <Label text="Paid Bills" />
+                    <Label fx:id="paidBillsLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="0" />
+                </VBox>
+                <VBox alignment="CENTER" style="-fx-background-color: #fff3e0; -fx-padding: 10; -fx-background-radius: 5;">
+                    <Label text="Pending Bills" />
+                    <Label fx:id="pendingBillsLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="0" />
+                </VBox>
+                <VBox alignment="CENTER" style="-fx-background-color: #ffebee; -fx-padding: 10; -fx-background-radius: 5;">
+                    <Label text="Total Amount" />
+                    <Label fx:id="totalAmountLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="0.00" />
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Tab pane for different bill statuses -->
+        <TabPane fx:id="billsTabPane" prefHeight="400.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <tabs>
+                <Tab text="All Bills">
+                    <content>
+                        <TableView fx:id="allBillsTable">
+                            <columns>
+                                <TableColumn fx:id="allBillNoCol" prefWidth="80.0" text="Bill No."/>
+                                <TableColumn fx:id="allDateCol" prefWidth="100.0" text="Date"/>
+                                <TableColumn fx:id="allTimeCol" prefWidth="80.0" text="Time"/>
+                                <TableColumn fx:id="allAmountCol" prefWidth="100.0" text="Amount"/>
+                                <TableColumn fx:id="allStatusCol" prefWidth="100.0" text="Status"/>
+                                <TableColumn fx:id="allAdminCol" prefWidth="150.0" text="Processed By"/>
+                                <TableColumn fx:id="allActionsCol" prefWidth="170.0" text="Actions"/>
+                            </columns>
+                        </TableView>
+                    </content>
+                </Tab>
+                <Tab text="Paid">
+                    <content>
+                        <TableView fx:id="paidBillsTable">
+                            <columns>
+                                <TableColumn fx:id="paidBillNoCol" prefWidth="80.0" text="Bill No."/>
+                                <TableColumn fx:id="paidDateCol" prefWidth="100.0" text="Date"/>
+                                <TableColumn fx:id="paidTimeCol" prefWidth="80.0" text="Time"/>
+                                <TableColumn fx:id="paidAmountCol" prefWidth="100.0" text="Amount"/>
+                                <TableColumn fx:id="paidAdminCol" prefWidth="150.0" text="Processed By"/>
+                                <TableColumn fx:id="paidActionsCol" prefWidth="270.0" text="Actions"/>
+                            </columns>
+                        </TableView>
+                    </content>
+                </Tab>
+                <Tab text="Pending">
+                    <content>
+                        <TableView fx:id="pendingBillsTable">
+                            <columns>
+                                <TableColumn fx:id="pendingBillNoCol" prefWidth="80.0" text="Bill No."/>
+                                <TableColumn fx:id="pendingDateCol" prefWidth="100.0" text="Date"/>
+                                <TableColumn fx:id="pendingTimeCol" prefWidth="80.0" text="Time"/>
+                                <TableColumn fx:id="pendingAmountCol" prefWidth="100.0" text="Amount"/>
+                                <TableColumn fx:id="pendingActionsCol" prefWidth="270.0" text="Actions"/>
+                            </columns>
+                        </TableView>
+                    </content>
+                </Tab>
+                <Tab text="Cancelled">
+                    <content>
+                        <TableView fx:id="cancelledBillsTable">
+                            <columns>
+                                <TableColumn fx:id="cancelledBillNoCol" prefWidth="80.0" text="Bill No."/>
+                                <TableColumn fx:id="cancelledDateCol" prefWidth="100.0" text="Date"/>
+                                <TableColumn fx:id="cancelledTimeCol" prefWidth="80.0" text="Time"/>
+                                <TableColumn fx:id="cancelledAmountCol" prefWidth="100.0" text="Amount"/>
+                                <TableColumn fx:id="cancelledAdminCol" prefWidth="150.0" text="Processed By"/>
+                                <TableColumn fx:id="cancelledActionsCol" prefWidth="270.0" text="Actions"/>
+                            </columns>
+                        </TableView>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+
+        <!-- Bill Details Section (Initially Hidden) -->
+        <VBox fx:id="billDetailsPane" spacing="10.0" visible="false" managed="false">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="Bill Details" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                        <Button fx:id="closeDetailsBtn" mnemonicParsing="false" onAction="#handleCloseDetails"
+                                style="-fx-background-color: #e0e0e0;" text="Close" HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+
+                <GridPane hgap="10.0" vgap="10.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15;">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Bill No:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <Label fx:id="detailsBillNoLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        <Label text="Date:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                        <Label fx:id="detailsDateLabel" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                        <Label text="Time:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                        <Label fx:id="detailsTimeLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <Label text="Amount:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                        <Label fx:id="detailsAmountLabel" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                        <Label text="Status:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                        <Label fx:id="detailsStatusLabel" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                        <Label text="Processed By:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                        <Label fx:id="detailsAdminLabel" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                    </children>
+                </GridPane>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button fx:id="payBillBtn" mnemonicParsing="false" onAction="#handlePayBill"
+                                prefHeight="35.0" prefWidth="150.0"
+                                style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Pay Bill"/>
+                        <Button fx:id="downloadReceiptBtn" mnemonicParsing="false" onAction="#handleDownloadReceipt"
+                                prefHeight="35.0" prefWidth="150.0"
+                                style="-fx-background-color: #2d7ae5; -fx-text-fill: white;" text="Download Receipt"/>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="20.0" />
+            </padding>
+        </VBox>
+    </children>
+</VBox>

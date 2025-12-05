@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="800" prefWidth="1200" spacing="20" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.db_project1.AdminAppointmentController">
+    <padding>
+        <Insets bottom="30" left="40" right="40" top="30" />
+    </padding>
+
+    <!-- Top Bar -->
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <Button fx:id="backButton" onAction="#handleFilter" style="-fx-background-color: #e3f0fc; -fx-text-fill: #1976d2; -fx-font-weight: bold; -fx-background-radius: 8;" text="Back">
+            <graphic>
+                <ImageView fitHeight="18" fitWidth="18">
+                    <!--
+                    <image>
+                        <Image url="@../../../images/back.png" />
+                    </image>  -->
+                </ImageView>
+            </graphic>
+        </Button>
+        <Label style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Appointment Manager" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Label style="-fx-font-size: 14px; -fx-text-fill: #888;" text="Today's Date" />
+        <Label fx:id="dateLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 0 10 0 10;" text="2024-02-28" />
+        <ImageView fitHeight="24" fitWidth="24">
+            <!--
+            <image>
+                <Image url="@../../../images/calendar.png" />
+            </image> -->
+        </ImageView>
+    </HBox>
+
+    <!-- All Appointments Label -->
+    <Label fx:id="appointmentCountLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="All Appointments (0)" />
+
+    <!-- Filter Row -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label style="-fx-font-size: 14px;" text="Date:" />
+        <DatePicker fx:id="datePicker" promptText="dd-mm-yyyy" style="-fx-font-size: 14px;" />
+        <Label style="-fx-font-size: 14px;" text="Doctor:" />
+        <ComboBox fx:id="doctorComboBox" promptText="Choose Doctor Name from the list" style="-fx-font-size: 14px;" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="filterButton" onAction="#handleFilter" minWidth="90" style="-fx-background-color: #e3f0fc; -fx-text-fill: #1976d2; -fx-font-size: 15px; -fx-font-weight: bold; -fx-background-radius: 8;" text="Filter">
+            <graphic>
+                <ImageView fitHeight="18" fitWidth="18">
+                    <!--
+                    <image>
+                        <Image url="@../../../images/filter.png" />
+                    </image> -->
+                </ImageView>
+            </graphic>
+        </Button>
+    </HBox>
+
+    <!-- Appointments Table -->
+    <TableView fx:id="appointmentTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="patientNameColumn" prefWidth="160" text="Patient name" />
+            <TableColumn fx:id="appointmentNumberColumn" prefWidth="140" text="Appointment number" />
+            <TableColumn fx:id="doctorColumn" prefWidth="130" text="Doctor" />
+            <TableColumn fx:id="sessionTitleColumn" prefWidth="140" text="Session Title" />
+            <TableColumn fx:id="sessionDateTimeColumn" prefWidth="170" text="Session Date &amp; Time" />
+            <TableColumn fx:id="appointmentDateColumn" prefWidth="150" text="Appointment Date" />
+            <TableColumn fx:id="eventsColumn" prefWidth="120" text="Events" />
+        </columns>
+    </TableView>
+</VBox>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="900" prefWidth="1200" spacing="25" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.db_project1.AdminHomeController">
+    <padding>
+        <Insets bottom="30" left="40" right="40" top="30" />
+    </padding>
+
+    <!-- Top Bar -->
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <TextField fx:id="searchField" promptText="Search Doctor name or Email" style="-fx-font-size: 16px;" HBox.hgrow="ALWAYS" />
+        <Button fx:id="searchButton" onAction="#handleSearch" style="-fx-background-color: #e3f0fc; -fx-text-fill: #1976d2; -fx-font-size: 16px;" text="Search" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Label style="-fx-font-size: 14px; -fx-text-fill: #888;" text="Today's Date" />
+        <Label fx:id="dateLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 0 10 0 10;" text="2024-02-28" />
+        <ImageView fitHeight="24" fitWidth="24">
+            <image>
+                <Image url="@../../../icons/calender.png" />
+            </image>
+        </ImageView>
+    </HBox>
+
+    <!-- Status Cards -->
+    <HBox alignment="CENTER_LEFT" spacing="20">
+        <!-- Card 1 - Doctors -->
+        <VBox alignment="CENTER" maxWidth="300" minWidth="120" prefHeight="90" prefWidth="180" spacing="5" style="-fx-background-color: #f8fafd; -fx-background-radius: 12; -fx-border-color: #e3e6e8; -fx-border-radius: 12;">
+            <Label fx:id="doctorsCount" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1976d2;" text="0" />
+            <HBox alignment="CENTER" spacing="7">
+                <Label style="-fx-font-size: 15px; -fx-text-fill: #222;" text="Doctors" />
+                <ImageView fitHeight="28.0" fitWidth="32.0">
+                    <image>
+                        <Image url="@../../../icons/docblue.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+        </VBox>
+        <!-- Card 2 - Patients -->
+        <VBox alignment="CENTER" maxWidth="300" minWidth="120" prefHeight="90" prefWidth="180" spacing="5" style="-fx-background-color: #f8fafd; -fx-background-radius: 12; -fx-border-color: #e3e6e8; -fx-border-radius: 12;">
+            <Label fx:id="patientsCount" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1976d2;" text="0" />
+            <HBox alignment="CENTER" spacing="7">
+                <Label style="-fx-font-size: 15px; -fx-text-fill: #222;" text="Patients" />
+                <ImageView fitHeight="33.0" fitWidth="39.0">
+                    <image>
+                        <Image url="@../../../icons/pat.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+        </VBox>
+        <!-- Card 3 - New Bookings -->
+        <VBox alignment="CENTER" maxWidth="300" minWidth="120" prefHeight="90" prefWidth="180" spacing="5" style="-fx-background-color: #f8fafd; -fx-background-radius: 12; -fx-border-color: #e3e6e8; -fx-border-radius: 12;">
+            <Label fx:id="newBookingsCount" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1976d2;" text="0" />
+            <HBox alignment="CENTER" spacing="7">
+                <Label style="-fx-font-size: 15px; -fx-text-fill: #222;" text="NewBooking" />
+                <ImageView fitHeight="22" fitWidth="22">
+                    <image>
+                        <Image url="@../../../icons/saveicon.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+        </VBox>
+        <!-- Card 4 - Today's Appointments -->
+        <VBox alignment="CENTER" maxWidth="300" minWidth="120" prefHeight="90" prefWidth="180" spacing="5" style="-fx-background-color: #f8fafd; -fx-background-radius: 12; -fx-border-color: #e3e6e8; -fx-border-radius: 12;">
+            <Label fx:id="todayApptsCount" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1976d2;" text="0" />
+            <HBox alignment="CENTER" spacing="7">
+                <Label style="-fx-font-size: 15px; -fx-text-fill: #222;" text="Today Appointments" HBox.hgrow="ALWAYS" />
+                <ImageView fitHeight="34.0" fitWidth="42.0">
+                    <image>
+                        <Image url="@../../../icons/session.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <!-- Status Label -->
+    <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 10 0 0 0;" text="Status" />
+
+    <!-- Main Content: Upcoming Appointments -->
+    <VBox spacing="12" style="-fx-background-color: #fff;" VBox.vgrow="ALWAYS">
+        <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #1976d2;" text="Upcoming Appointments until Next Wednesday" />
+        <Label style="-fx-font-size: 14px; -fx-text-fill: #444;" text="Here's Quick access to Upcoming Appointments until 7 days&#10;More details available in @Appointment section." />
+        <VBox spacing="0" style="-fx-background-color: #f8fafd; -fx-background-radius: 10; -fx-border-color: #e3e6e8; -fx-border-radius: 10;" VBox.vgrow="ALWAYS">
+            <!-- Appointments Table -->
+            <TableView fx:id="appointmentsTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="appointmentIdColumn" prefWidth="150" text="Appointment number" />
+                    <TableColumn fx:id="patientNameColumn" prefWidth="200" text="Patient name" />
+                    <TableColumn fx:id="doctorNameColumn" prefWidth="200" text="Doctor" />
+                    <TableColumn fx:id="dateColumn" prefWidth="150" text="Date" />
+                    <TableColumn fx:id="timeColumn" prefWidth="150" text="Time" />
+                    <TableColumn fx:id="statusColumn" prefWidth="150" text="Status" />
+                </columns>
+            </TableView>
+            <Button fx:id="showAllAppointmentsButton" maxWidth="Infinity" minHeight="40" onAction="#handleShowAllAppointments" style="-fx-background-color: #1976d2; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 7;" text="Show all Appointments" />
+        </VBox>
+    </VBox>
+</VBox>

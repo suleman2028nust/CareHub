@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.db_project1.MyPrescriptionsController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <children>
+        <!-- Header Section with consistent date display -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <Label text="My Prescriptions" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Label text="Today's Date"/>
+                    <Label fx:id="dateLabel" text="2025-05-09" style="-fx-font-weight: bold;"/>
+                </HBox>
+            </children>
+        </HBox>
+
+        <!-- Filter Section -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <DatePicker fx:id="fromDatePicker" prefHeight="35.0" prefWidth="200.0" promptText="From Date"/>
+                <DatePicker fx:id="toDatePicker" prefHeight="35.0" prefWidth="200.0" promptText="To Date"/>
+                <ComboBox fx:id="doctorFilterCombo" prefHeight="35.0" prefWidth="200.0" promptText="Filter by Doctor"/>
+                <Button fx:id="applyFilterBtn" mnemonicParsing="false" onAction="#handleApplyFilter" prefHeight="35.0"
+                        prefWidth="100.0" style="-fx-background-color: #2d7ae5; -fx-text-fill: white;" text="Apply"/>
+                <Button fx:id="clearFilterBtn" mnemonicParsing="false" onAction="#handleClearFilter" prefHeight="35.0"
+                        prefWidth="100.0" style="-fx-background-color: #e0e0e0;" text="Clear"/>
+            </children>
+        </HBox>
+
+        <!-- Prescriptions Table -->
+        <TableView fx:id="prescriptionsTable" prefHeight="500.0" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="prescriptionIdCol" prefWidth="100.0" text="Prescription ID"/>
+                <TableColumn fx:id="doctorNameCol" prefWidth="150.0" text="Doctor"/>
+                <TableColumn fx:id="dateIssuedCol" prefWidth="120.0" text="Date Issued"/>
+                <TableColumn fx:id="diagnosisCol" prefWidth="200.0" text="Diagnosis"/>
+                <TableColumn fx:id="actionsCol" prefWidth="150.0" text="Actions"/>
+            </columns>
+        </TableView>
+
+        <!-- Prescription Details Section (Initially Hidden) -->
+        <VBox fx:id="prescriptionDetailsPane" spacing="10.0" visible="false" managed="false">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="Prescription Details" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                        <Button fx:id="closeDetailsBtn" mnemonicParsing="false" onAction="#handleCloseDetails"
+                                style="-fx-background-color: #e0e0e0;" text="Close" HBox.hgrow="ALWAYS"/>
+                    </children>
+                </HBox>
+
+                <GridPane hgap="10.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Prescription ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                        <Label fx:id="detailsPrescriptionIdLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                        <Label text="Date Issued:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                        <Label fx:id="detailsDateIssuedLabel" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                        <Label text="Doctor:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                        <Label fx:id="detailsDoctorLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <Label text="Diagnosis:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                        <Label fx:id="detailsDiagnosisLabel" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                        <Label text="Remarks:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                        <Label fx:id="detailsRemarksLabel" wrapText="true" GridPane.columnIndex="1"
+                               GridPane.columnSpan="3" GridPane.rowIndex="2"/>
+                    </children>
+                </GridPane>
+
+                <Label text="Medications" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                <TableView fx:id="medicationsTable" prefHeight="200.0">
+                    <columns>
+                        <TableColumn fx:id="medicationNameCol" prefWidth="200.0" text="Medication"/>
+                        <TableColumn fx:id="dosageCol" prefWidth="120.0" text="Dosage"/>
+                        <TableColumn fx:id="frequencyCol" prefWidth="120.0" text="Frequency"/>
+                        <TableColumn fx:id="durationCol" prefWidth="120.0" text="Duration"/>
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button fx:id="printPrescriptionBtn" mnemonicParsing="false" onAction="#handlePrintPrescription"
+                                prefHeight="35.0" prefWidth="150.0"
+                                style="-fx-background-color: #2d7ae5; -fx-text-fill: white;" text="Print Prescription"/>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="20.0" />
+            </padding>
+        </VBox>
+    </children>
+</VBox>

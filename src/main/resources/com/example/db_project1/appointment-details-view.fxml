@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="detailsPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.db_project1.AppointmentDetailsController">
+    <children>
+        <VBox alignment="TOP_CENTER" spacing="20.0" prefWidth="600.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+            <padding>
+                <Insets top="20.0" left="20.0" right="20.0" bottom="20.0" />
+            </padding>
+            <children>
+                <!-- Title -->
+                <Label text="Appointment Details" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+                <!-- Patient Name -->
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Patient Name:" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                        <Label fx:id="patientNameLabel" text="John Doe" style="-fx-font-size: 14px;" />
+                    </children>
+                </HBox>
+
+                <!-- Appointment Date -->
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Appointment Date:" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                        <Label fx:id="appointmentDateLabel" text="2023-11-01" style="-fx-font-size: 14px;" />
+                    </children>
+                </HBox>
+
+                <!-- Appointment Time -->
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Appointment Time:" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                        <Label fx:id="appointmentTimeLabel" text="10:30 AM" style="-fx-font-size: 14px;" />
+                    </children>
+                </HBox>
+
+                <!-- Appointment Status -->
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Status:" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                        <Label fx:id="statusLabel" text="Scheduled" style="-fx-font-size: 14px;" />
+                    </children>
+                </HBox>
+
+                <!-- Reason for Appointment -->
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Reason for Appointment:" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                        <Label fx:id="reasonLabel" text="General Checkup" style="-fx-font-size: 14px;" />
+                    </children>
+                </HBox>
+
+                <Separator />
+
+                <!-- Action Buttons -->
+                <HBox spacing="15.0" alignment="CENTER">
+                    <children>
+                        <Button text="Close" fx:id="closeButton" style="-fx-background-color: #d9534f; -fx-text-fill: white;" />
+                        <Button text="Mark as Completed" fx:id="completeButton" style="-fx-background-color: #5cb85c; -fx-text-fill: white;" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

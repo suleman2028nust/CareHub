@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: linear-gradient(to bottom right, #85C1E9, #2E86C1);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.db_project1.SplashScreenController">
+    <children>
+        <StackPane layoutX="205.0" layoutY="81.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <!-- Background Elements -->
+                <Rectangle arcHeight="180.0" arcWidth="180.0" fill="#AED6F1" height="320.0" opacity="0.25" rotate="45.0" width="320.0" />
+                <Rectangle arcHeight="180.0" arcWidth="180.0" fill="#D6EAF8" height="280.0" opacity="0.2" rotate="-30.0" width="280.0" />
+                <Rectangle arcHeight="150.0" arcWidth="150.0" fill="#3498DB" height="200.0" opacity="0.15" rotate="15.0" width="200.0" />
+
+                <!-- Main Content -->
+                <VBox alignment="CENTER" spacing="25.0">
+                    <children>
+                  <ImageView fitHeight="162.0" fitWidth="200.0">
+                     <image>
+                        <Image url="@hms_logo.png" />
+                     </image>
+                  </ImageView>
+
+                        <VBox alignment="CENTER" spacing="10.0">
+                            <children>
+                                <Label style="-fx-text-fill: white;" text="CareHub">
+                                    <font>
+                                        <Font name="System Bold" size="42.0" />
+                                    </font>
+                                    <effect>
+                                        <DropShadow color="#1565C0" height="15.0" radius="7.0" width="15.0" />
+                                    </effect>
+                                </Label>
+                                <Label style="-fx-text-fill: #FFFFFF;" text="Your Health, Our Priority">
+                                    <font>
+                                        <Font name="System Italic" size="20.0" />
+                                    </font>
+                                    <effect>
+                                        <Glow level="0.3" />
+                                    </effect>
+                                </Label>
+                            </children>
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="15.0" translateY="50.0">
+                            <children>
+                                <Label fx:id="loadingLabel" style="-fx-text-fill: white;" text="Loading...">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                    <effect>
+                                        <DropShadow color="#1565C0" height="8.0" radius="3.5" width="8.0" />
+                                    </effect>
+                                </Label>
+                                <Rectangle fx:id="progressBar" arcHeight="15.0" arcWidth="15.0" fill="#FFFFFF" height="7.0" stroke="#1565C0" strokeType="INSIDE" strokeWidth="0.5" width="0.0">
+                                    <effect>
+                                        <Glow level="0.2" />
+                                    </effect>
+                                </Rectangle>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <!-- Version number -->
+                <Label style="-fx-text-fill: #FFFFFF;" text="v1.0.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <effect>
+                        <DropShadow color="#1565C0" height="5.0" radius="2.0" width="5.0" />
+                    </effect>
+                </Label>
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>

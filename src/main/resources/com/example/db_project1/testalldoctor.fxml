@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.db_project1.TestDoctorTableController"
+      spacing="10">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <TableView fx:id="doctorsTable" prefHeight="300" prefWidth="400">
+        <columns>
+            <TableColumn fx:id="doctorIdCol" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="doctorNameCol" text="Name" prefWidth="150"/>
+            <TableColumn fx:id="specializationCol" text="Specialization" prefWidth="150"/>
+        </columns>
+    </TableView>
+</VBox>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="detailsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-width: 1;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.db_project1.DoctorDetailsController">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutX="130.0" layoutY="70.0" prefHeight="400.0" prefWidth="400.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <Label alignment="CENTER" text="View Details" textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+
+                <VBox spacing="5.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Name:" textFill="#555555">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="doctorNameLabel" text="Test Doctor">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </VBox>
+
+                <VBox spacing="5.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Email:" textFill="#555555">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="doctorEmailLabel" text="doctor@edoc.com">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <VBox spacing="5.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="NIC:" textFill="#555555">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="doctorNICLabel" text="000000000">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <VBox spacing="5.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Telephone:" textFill="#555555">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="doctorTelephoneLabel" text="0110000000">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <VBox spacing="5.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Specialties:" textFill="#555555">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="doctorSpecialtiesLabel" text="Accident and emergency medicine" wrapText="true">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <Region VBox.vgrow="ALWAYS" />
+
+                <Button fx:id="okButton" mnemonicParsing="false" onAction="#handleOkButton" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #e8f4f8;" text="OK">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

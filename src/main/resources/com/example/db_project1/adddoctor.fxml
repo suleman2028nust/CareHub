@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.db_project1.DoctorAddFormController">
+    <children>
+        <VBox spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <!-- Header -->
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="Add New Doctor" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0" HBox.hgrow="ALWAYS">
+                            <Label text="Today's Date" />
+                            <Label fx:id="dateLabel" text="2025-05-14" style="-fx-font-weight: bold;" />
+                        </HBox>
+                    </children>
+                </HBox>
+
+                <Separator />
+
+                <!-- Main content in a scrollable area -->
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                    <content>
+                        <VBox spacing="20.0">
+                            <!-- Personal Information -->
+                            <VBox spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 5px; -fx-padding: 15px;">
+                                <Label text="Personal Information" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+
+                                <GridPane hgap="15.0" vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="100.0" prefWidth="150.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="First Name *" />
+                                        <TextField fx:id="firstNameField" promptText="Enter first name" GridPane.columnIndex="1" />
+
+                                        <Label text="Middle Name" GridPane.rowIndex="1" />
+                                        <TextField fx:id="middleNameField" promptText="Enter middle name (optional)" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                        <Label text="Last Name *" GridPane.rowIndex="2" />
+                                        <TextField fx:id="lastNameField" promptText="Enter last name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                        <Label text="Date of Birth" GridPane.rowIndex="3" />
+                                        <DatePicker fx:id="dobPicker" prefWidth="200.0" promptText="Select date of birth" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                        <Label text="Gender *" GridPane.rowIndex="4" />
+                                        <ComboBox fx:id="genderComboBox" promptText="Select gender" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                                    </children>
+                                </GridPane>
+                            </VBox>
+
+                            <!-- Contact Information -->
+                            <VBox spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 5px; -fx-padding: 15px;">
+                                <Label text="Contact Information" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+
+                                <GridPane hgap="15.0" vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="100.0" prefWidth="150.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Email *" />
+                                        <TextField fx:id="emailField" promptText="Enter email address" GridPane.columnIndex="1" />
+
+                                        <Label text="Phone Number *" GridPane.rowIndex="1" />
+                                        <TextField fx:id="phoneField" promptText="Enter phone number" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                        <Label text="Password *" GridPane.rowIndex="2" />
+                                        <PasswordField fx:id="passwordField" promptText="Enter password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                        <Label text="Confirm Password *" GridPane.rowIndex="3" />
+                                        <PasswordField fx:id="confirmPasswordField" promptText="Confirm password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    </children>
+                                </GridPane>
+                            </VBox>
+
+                            <!-- Professional Information -->
+                            <VBox spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 5px; -fx-padding: 15px;">
+                                <Label text="Professional Information" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+
+                                <GridPane hgap="15.0" vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="100.0" prefWidth="150.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Specialization *" />
+                                        <ComboBox fx:id="specializationComboBox" prefWidth="200.0" promptText="Select specialization" GridPane.columnIndex="1" />
+
+                                        <Label text="Experience (years) *" GridPane.rowIndex="1" />
+                                        <TextField fx:id="experienceField" promptText="Enter years of experience" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                        <Label text="Languages *" GridPane.rowIndex="2" />
+                                        <TextField fx:id="languagesField" promptText="Enter languages (comma separated)" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                        <Label text="Schedule *" GridPane.rowIndex="3" />
+                                        <TextField fx:id="scheduleField" promptText="Enter working schedule" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    </children>
+                                </GridPane>
+                            </VBox>
+
+                            <!-- Photo Upload Section -->
+                            <VBox spacing="10.0" style="-fx-background-color: #f8f9fa; -fx-background-radius: 5px; -fx-padding: 15px;">
+                                <Label text="Profile Photo" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <Label fx:id="photoNameLabel" text="No file selected" />
+                                    <Button fx:id="browseButton" text="Browse..." onAction="#handleBrowsePhoto"
+                                            style="-fx-background-color: #2d7ae5; -fx-text-fill: white;" />
+                                </HBox>
+                            </VBox>
+
+                            <!-- Action Buttons -->
+                            <HBox spacing="10.0" alignment="CENTER_RIGHT">
+                                <Button fx:id="cancelButton" text="Cancel" onAction="#handleCancel"
+                                        style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
+                                <Button fx:id="saveButton" text="Add Doctor" onAction="#handleSave"
+                                        style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+                            </HBox>
+
+                            <!-- Status Message -->
+                            <Label fx:id="statusLabel" alignment="CENTER" maxWidth="Infinity" style="-fx-font-weight: bold;" />
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

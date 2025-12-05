@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.db_project1.MyProfileController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <children>
+        <!-- Header Section with consistent date display -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <Label text="My Profile" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0" HBox.hgrow="ALWAYS">
+                    <Label text="Today's Date"/>
+                    <Label fx:id="dateLabel" text="2025-05-09" style="-fx-font-weight: bold;"/>
+                </HBox>
+            </children>
+        </HBox>
+
+        <!-- Profile Tabs -->
+        <TabPane fx:id="profileTabPane" prefHeight="600.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <tabs>
+                <!-- Personal Information Tab -->
+                <Tab text="Personal Information">
+                    <content>
+                        <ScrollPane fitToWidth="true">
+                            <content>
+                                <VBox spacing="15.0" style="-fx-padding: 20;">
+                                    <children>
+                                        <!-- Profile Image Section -->
+                                        <HBox alignment="CENTER" spacing="20.0">
+                                            <children>
+                                                <VBox alignment="CENTER" spacing="10.0">
+                                                    <children>
+                                                        <!-- Circle image container would go here -->
+                                                        <StackPane prefHeight="120.0" prefWidth="120.0"
+                                                                   style="-fx-background-color: #e0e0e0; -fx-background-radius: 60;">
+                                                        </StackPane>
+                                                        <Button fx:id="changePhotoBtn" mnemonicParsing="false"
+                                                                onAction="#handleChangePhoto" text="Change Photo"/>
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets bottom="20.0"/>
+                                            </VBox.margin>
+                                        </HBox>
+
+                                        <!-- Personal Details Form -->
+                                        <GridPane hgap="15.0" vgap="15.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0"/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+                                                <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                            <children>
+                                                <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                                <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                                <Label text="Middle Name:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                                <TextField fx:id="midNameField" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+                                                <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                                <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                                <Label text="Date of Birth:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                                <DatePicker fx:id="dobPicker" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+                                                <Label text="Gender:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                                <ComboBox fx:id="genderCombo" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                    <items>
+                                                        <FXCollections fx:factory="observableArrayList">
+                                                            <String fx:value="Male" />
+                                                            <String fx:value="Female" />
+                                                            <String fx:value="Other" />
+                                                        </FXCollections>
+                                                    </items>
+                                                </ComboBox>
+                                                <Label text="Blood Group:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                                <ComboBox fx:id="bloodGroupCombo" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                                    <items>
+                                                        <FXCollections fx:factory="observableArrayList">
+                                                            <String fx:value="A+" />
+                                                            <String fx:value="A-" />
+                                                            <String fx:value="B+" />
+                                                            <String fx:value="B-" />
+                                                            <String fx:value="AB+" />
+                                                            <String fx:value="AB-" />
+                                                            <String fx:value="O+" />
+                                                            <String fx:value="O-" />
+                                                        </FXCollections>
+                                                    </items>
+                                                </ComboBox>
+
+                                                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                                <Label text="Phone Number:" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                                                <TextField fx:id="phoneField" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
+                                                <Label text="Insurance Type:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                                <TextField fx:id="insuranceField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                                <Label text="Patient ID:" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                                                <TextField fx:id="patientIdField" disable="true" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+
+                                                <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                                                <TextArea fx:id="addressField" prefHeight="80.0" wrapText="true"
+                                                          GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="3"/>
+                                            </children>
+                                        </GridPane>
+
+                                        <!-- Action Buttons -->
+                                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                            <children>
+                                                <Button fx:id="resetBtn" mnemonicParsing="false" onAction="#handleReset"
+                                                        prefHeight="40.0" prefWidth="120.0"
+                                                        style="-fx-background-color: #e0e0e0;" text="Reset"/>
+                                                <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#handleSave"
+                                                        prefHeight="40.0" prefWidth="120.0"
+                                                        style="-fx-background-color: #2d7ae5; -fx-text-fill: white;" text="Save Changes"/>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets top="20.0"/>
+                                            </VBox.margin>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </ScrollPane>
+                    </content>
+                </Tab>
+
+                <!-- Medical History Tab -->
+                <Tab text="Medical History">
+                    <content>
+                        <VBox spacing="15.0" style="-fx-padding: 20;">
+                            <children>
+                                <!-- Medical History Summary -->
+                                <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15;">
+                                    <children>
+                                        <VBox alignment="CENTER" style="-fx-background-color: #e9f3ff; -fx-padding: 10; -fx-background-radius: 5;">
+                                            <Label text="Total Visits" />
+                                            <Label fx:id="totalVisitsLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="0" />
+                                        </VBox>
+                                        <VBox alignment="CENTER" style="-fx-background-color: #e8f5e9; -fx-padding: 10; -fx-background-radius: 5;">
+                                            <Label text="Last Visit" />
+                                            <Label fx:id="lastVisitLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="N/A" />
+                                        </VBox>
+                                        <VBox alignment="CENTER" style="-fx-background-color: #fff3e0; -fx-padding: 10; -fx-background-radius: 5;">
+                                            <Label text="Recent Appointments" />
+                                            <Label fx:id="recentAppointmentsLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="0" />
+                                        </VBox>
+                                        <VBox alignment="CENTER" style="-fx-background-color: #ffebee; -fx-padding: 10; -fx-background-radius: 5;">
+                                            <Label text="Upcoming Appointments" />
+                                            <Label fx:id="upcomingAppointmentsLabel" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="0" />
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <!-- Visit History Table -->
+                                <Label text="Visit History" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                <TableView fx:id="visitHistoryTable" prefHeight="200.0" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="visitDateCol" prefWidth="120.0" text="Visit Date"/>
+                                        <TableColumn fx:id="visitDoctorCol" prefWidth="150.0" text="Doctor"/>
+                                        <TableColumn fx:id="visitTypeCol" prefWidth="120.0" text="Visit Type"/>
+                                        <TableColumn fx:id="visitDiagnosisCol" prefWidth="200.0" text="Diagnosis"/>
+                                        <TableColumn fx:id="visitDetailsCol" prefWidth="100.0" text="Details"/>
+                                    </columns>
+                                </TableView>
+
+                                <!-- Medical Conditions Section -->
+                                <Label text="Medical Conditions" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                <VBox fx:id="medicalConditionsBox" spacing="10.0">
+                                    <!-- Medical conditions will be added dynamically here -->
+                                    <Label text="No medical conditions recorded." fx:id="noConditionsLabel"/>
+                                </VBox>
+
+                                <!-- Allergies Section -->
+                                <Label text="Allergies" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                                <VBox fx:id="allergiesBox" spacing="10.0">
+                                    <!-- Allergies will be added dynamically here -->
+                                    <Label text="No allergies recorded." fx:id="noAllergiesLabel"/>
+                                </VBox>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+
+                <!-- Security Tab -->
+                <Tab text="Security">
+                    <content>
+                        <VBox spacing="20.0" style="-fx-padding: 20;">
+                            <children>
+                                <!-- Change Password Section -->
+                                <TitledPane animated="false" text="Change Password">
+                                    <content>
+                                        <GridPane hgap="15.0" vgap="15.0" style="-fx-padding: 15;">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0"/>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="400.0"/>
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+                                            </rowConstraints>
+                                            <children>
+                                                <Label text="Current Password:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                                <PasswordField fx:id="currentPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                                <Label text="New Password:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                                <PasswordField fx:id="newPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                                <Label text="Confirm New Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                                <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                                <HBox alignment="CENTER_RIGHT" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                    <Button fx:id="changePasswordBtn" mnemonicParsing="false" onAction="#handleChangePassword"
+                                                            prefHeight="35.0" prefWidth="150.0"
+                                                            style="-fx-background-color: #2d7ae5; -fx-text-fill: white;" text="Change Password"/>
+                                                </HBox>
+                                            </children>
+                                        </GridPane>
+                                    </content>
+                                </TitledPane>
+
+                                <!-- Account Security Settings -->
+                                <TitledPane animated="false" text="Account Security">
+                                    <content>
+                                        <VBox spacing="15.0" style="-fx-padding: 15;">
+                                            <children>
+                                                <CheckBox fx:id="twoFactorAuthCheckbox" mnemonicParsing="false" text="Enable Two-Factor Authentication"/>
+                                                <CheckBox fx:id="loginNotificationsCheckbox" mnemonicParsing="false" text="Send login notifications"/>
+                                                <Label text="Recovery Email" style="-fx-font-weight: bold;"/>
+                                                <HBox spacing="10.0">
+                                                    <TextField fx:id="recoveryEmailField" prefHeight="35.0" prefWidth="400.0" HBox.hgrow="ALWAYS"/>
+                                                    <Button fx:id="updateRecoveryEmailBtn" mnemonicParsing="false" onAction="#handleUpdateRecoveryEmail"
+                                                            prefHeight="35.0" prefWidth="100.0" text="Update"/>
+                                                </HBox>
+                                                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                                                    <Button fx:id="saveSecuritySettingsBtn" mnemonicParsing="false" onAction="#handleSaveSecuritySettings"
+                                                            prefHeight="35.0" prefWidth="150.0"
+                                                            style="-fx-background-color: #2d7ae5; -fx-text-fill: white;" text="Save Settings"/>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>
